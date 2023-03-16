@@ -1,0 +1,42 @@
+
+  .navbar {
+    background-color: blue;
+    justify-content: center;
+    
+}
+.navbar-brand {
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: bold;
+    justify-content: center;
+}
+.navbar-brand:hover {
+    color: white;
+}
+.form-control {
+   
+    font-size: 1.2rem;
+    border-color: blue
+}
+.btn-primary {
+    border-color: blue;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    
+}
+/* .btn-primary:hover {
+    background-color: 
+    border-color: #3C8D40;
+} */
+.container {
+
+ max-width: 500px;
+ margin: 0 auto;
+ margin-top: 50px;
+ margin-left: 20px;
+}
