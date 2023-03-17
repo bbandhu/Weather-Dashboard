@@ -68,7 +68,6 @@ var displayWeather = function (data) {
 
   var titleEl = document.createElement("span");
   titleEl.textContent = humidity;
-
   weatherReport.appendChild(titleEl);
 };
 
