@@ -1,0 +1,52 @@
+.navbar {
+    background-color: blue;
+    justify-content: center;
+    
+}
+.navbar-brand {
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: bold;
+    justify-content: center;
+}
+.navbar-brand:hover {
+    color: white;
+}
+
+.form-row label{
+
+    font-weight: bold;
+    font-size: ;
+
+}
+.form-control {
+   
+    font-size: 1.2rem;
+    border-color: blue;
+    width: 50%;
+
+    
+}
+.btn-primary {
+    border-color: blue;
+    /* padding: 10px 20px; */
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    margin-top: 10px;
+    width: 50%;
+
+    
+}
+/* .btn-primary:hover {
+    background-color: 
+    border-color: #3C8D40;
+} */
+.card {
+ max-width: 500px;
+ margin: 0 auto;
+ margin-top: 50px;
+ margin-left: 20px;
+ border: none;
+}
