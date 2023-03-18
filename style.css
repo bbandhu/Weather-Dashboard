@@ -17,7 +17,7 @@
 .form-row label{
 
     font-weight: bold;
-    font-size: ;
+   
 
 }
 .form-control {
@@ -50,3 +50,11 @@
  margin-left: 20px;
  border: none;
 }
+
+.flex-row  {
+    text-align: center;
+}
+.flex-row .card {
+    display:inline-block;
+}
+
