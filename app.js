@@ -49,10 +49,9 @@ var getWeatherData = function (lat, lon) {
     APIKey;
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
-      console.log(response);
-      response.json().then(function (data) {
-        console.log(data);
-        displayWeather(data);
+      response.json().then(function (weatherData) {
+        console.log(weatherData);
+        displayWeather(weatherData);
       });
     }
   });
@@ -63,76 +62,70 @@ var displayWeather = function (data) {
     weatherContainerEl.textContent = "No report";
     return;
   }
-  for (var i = 0; i < 5; i++) {
-    var hum = data.list[i].main.humidity;
-    var temp = data.list[i].main.temp;
-   // temp = tempConverter(temp);
+
+  for (var i = 0; i < 5 ; i++) {
+    
+    let humidity = data.list[i].main.humidity;
+    let temp = kelvinToFahrenheit(data.list[i].main.temp);
   
-    var wind = data.list[i].wind.speed;
-    var date = data.list[i].dt_txt;
-    date= date.split(' ')[0];
-    var icon = data.list[i].weather.icon;
-    var des = data.list[i].weather.description;
-    //var city = data.list[i].city.name;
-    console.log(hum, temp, wind);
+    let wind = data.list[i].wind.speed;
+    let dateFromAPI = data.list[i].dt_txt;
+
+    let timestamp = new Date(dateFromAPI).getTime();
+    let Day = new Date(timestamp).getDate();
+    let Month = new Date(timestamp).getMonth() + 1;
+    let Year = new Date(timestamp).getFullYear();
+    let date = `${Month}/${Day}/${Year}`;
+
+    var icon = data.list[i].weather[0].icon;
+    var des = data.list[i].weather[0].description;
+
     const weatherCardContainer = document.getElementById("weather-card-container");
-    // Create a new weather card element
     const weatherCard = document.createElement("div");
+    weatherCard.classList.add("col-sm-8")
     weatherCard.classList.add("card");
     
-    // Add the card body
     const cardBody = document.createElement("div");
     cardBody.classList.add("card-body");
     weatherCard.appendChild(cardBody);
     
-    // Add the city name
     const cityName = document.createElement("h2");
     cityName.textContent = city.value;
-    //cardBody.appendChild(cityName);
 
-     //Add the date
-     const dateField =document.createElement("p");
-     dateField.textContent = "date:"+date
-     cardBody.appendChild(dateField);
+    const dateField =document.createElement("p");
+    dateField.textContent = date;
+    cardBody.appendChild(dateField);
     
-    // Add the temperature
     const temperature = document.createElement("p");
     temperature.textContent = "Temp: " +temp +" F"; 
     cardBody.appendChild(temperature);
     
-    // // Add the weather icon
-    // const weatherIcon = document.createElement("img");
-    // weatherIcon = icon; 
-    // cardBody.appendChild(weatherIcon);
+    const weatherIcon = document.createElement("img");
+    weatherIcon.setAttribute('src', `http://openweathermap.org/img/w/${icon}.png`);
+    cardBody.appendChild(weatherIcon);
     
-    //Add the description
-    // const description = document.createElement("p");
-    // description.textContent = des; 
-    // cardBody.appendChild(description);
+    const humid = document.createElement("p");
+    humid.textContent = "Humidity: " +humidity +" %"
+    cardBody.appendChild(humid);
     
-    // Add the humidity
-    const humidity = document.createElement("p");
-    humidity.textContent = "Humidity: " +hum +" %"
-    cardBody.appendChild(humidity);
-    
-    // Add the wind speed
     const windSpeed = document.createElement("p");
     windSpeed.textContent = "Wind: " +wind +" MPH"
     cardBody.appendChild(windSpeed);
 
-   
-    
-    // Append the weather card to the container
     weatherCardContainer.appendChild(weatherCard);
   }
 };
 
 searchButton.addEventListener("click", formSubmitHandler);
-//addToSearchHistory(city);
 
 
-function tempConverter(temp) {
-  temp=((temp-273.15)*1.8)+32;
-  return temp.toString();
-
+function kelvinToFahrenheit(kelvin) {
+  return (kelvin - 273.15) * 9/5 + 32;
 }
+
+
+
+
+
+
+
