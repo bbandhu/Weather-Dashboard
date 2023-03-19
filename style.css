@@ -1,5 +1,5 @@
 .navbar {
-    background-color: blue;
+    background-color:navy;
     justify-content: center;
     
 }
@@ -17,36 +17,61 @@
 .form-row label{
 
     font-weight: bold;
-    font-size: ;
+   
 
 }
 .form-control {
    
     font-size: 1.2rem;
-    border-color: blue;
-    width: 50%;
+    border-color: lightblue;
+    width: 70%;
 
     
 }
 .btn-primary {
-    border-color: blue;
+    border-color: lightblue;
     /* padding: 10px 20px; */
     font-weight: bold;
     font-size: 1.2rem;
     border-radius: 10px;
     margin-top: 10px;
-    width: 50%;
+    width: 70%;
 
     
 }
+
 /* .btn-primary:hover {
     background-color: 
     border-color: #3C8D40;
 } */
 .card {
  max-width: 500px;
- margin: 0 auto;
  margin-top: 50px;
  margin-left: 20px;
  border: none;
 }
+
+#weather-card-container {
+    text-align: center;
+    display: flex;
+    border-color: lightblue;
+}
+
+
+
+/* .row{
+   
+    border-color: lightblue;
+    background-color: aliceblue;
+
+} */
+
+div.card-body{
+    display:inline-flexbox;
+    offset: distance 40px;;
+    background-color: darkslategray;
+    color: white;
+
+}
+
+
