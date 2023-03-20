@@ -30,7 +30,6 @@
 }
 .btn-primary {
     border-color: lightblue;
-    /* padding: 10px 20px; */
     font-weight: bold;
     font-size: 1.2rem;
     border-radius: 10px;
@@ -40,10 +39,7 @@
     
 }
 
-/* .btn-primary:hover {
-    background-color: 
-    border-color: #3C8D40;
-} */
+
 .card {
  max-width: 500px;
  margin-top: 50px;
@@ -52,26 +48,76 @@
 }
 
 #weather-card-container {
-    text-align: center;
+    /* text-align: center; */
     display: flex;
-    border-color: lightblue;
+
 }
-
-
-
-/* .row{
-   
-    border-color: lightblue;
-    background-color: aliceblue;
-
-} */
 
 div.card-body{
     display:inline-flexbox;
     offset: distance 40px;;
     background-color: darkslategray;
     color: white;
+    
 
 }
 
+
+div .todayForecast{
+    border-radius: 5px;
+    height: 300px;
+    padding: 25px;
+    position: absolute;
+    top: -75px;
+    right: -397px;
+
+}
+  .border-me {
+    /* default style without border */
+    /* border: none; */
+  }
+  
+  .border-me.with-border {
+    /* border style when border is added */
+    border: 1px solid black;
+  }
+
+@media (min-width: 992px) {
+    .fiveday {
+        margin-right: 1em; 
+        padding: .5em;
+    }
+
+} 
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: white;
+  }
+  
+  li {
+    height: 38px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: lightgray;
+    color: white;
+    font-size: 1.5em;
+    line-height: 1.5;
+    border-radius: 10px;
+    width: 70%;
+  }
+  
+  li:before {
+    content: "\200B";
+    position: absolute;
+  }
+  
+  li::after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
 
