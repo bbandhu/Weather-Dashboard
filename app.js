@@ -6,7 +6,6 @@ var weatherContainerEl = document.querySelector("#weather-container");
 var weatherSearchTerm = document.querySelector("#city-search-term");
 var currentForecastContainter = document.getElementById("current-weather");
 
-
 var lon;
 var lat;
 var searchHistory = [];
@@ -16,21 +15,18 @@ var formSubmitHandler = function (event) {
   var city = searchInput.value.trim();
   console.log(city);
   getWeatherDataCors(city);
-    // Return from function early if submitted city is blank
-   if(city ==""){
-
+  // Return from function early if submitted city is blank
+  if (city == "") {
     return;
-   }
+  }
   // Add city to searchHistory array, clear the input
   searchHistory.push(city);
   searchInput.value = "";
-  
+
   // Store updated search in localStorage, re-render the list
 
- saveToSearchHistory(city);
- renderSearchHistory();
-
-
+  saveToSearchHistory(city);
+  renderSearchHistory();
 };
 
 //function to get the latitute and longitude for a given city
@@ -81,10 +77,9 @@ var displayWeather = function (data) {
     return;
   }
 
-  for (var i = 1; i < 40; i=i+8) {
-    console.log("enetered on the loop");
+  for (var i = 1; i < 40; i = i + 8) {
     let humidity = data.list[i].main.humidity;
-    
+
     //let temp = kelvinToFahrenheit(data.list[i].main.temp);
 
     let temp = data.list[i].main.temp;
@@ -172,6 +167,9 @@ function currentForecast(data) {
 
   const currentForecastContainter = document.getElementById("current-weather");
   const currentForecastCard = document.createElement("div");
+  currentForecastCard.style.backgroundColor = "lightblue";
+  currentForecastCard.style.padding = "10px";
+  currentForecastCard.style.border = "1px solid black";
 
   // currentForecastCard.classList.add("d-flex flex-row bd-highlight mb-3");
   currentForecastCard.classList.add("card");
@@ -211,40 +209,35 @@ function currentForecast(data) {
   currentForecastContainter.appendChild(currentForecastCard);
 }
 
-
-
 function renderSearchHistory() {
   // Retrieve the search history from localStorage //TODO
   var searchCardContainer = document.getElementById("search-history");
-   searchCardContainer.innerHTML = "";
+  searchCardContainer.innerHTML = "";
 
-   for(var i =0; i<searchHistory.length; i++){
+  for (var i = 0; i < searchHistory.length; i++) {
     var search = searchHistory[i];
 
     var li = document.createElement("li");
     li.textContent = search;
-    li.setAttribute("data-index", i);  
+    li.setAttribute("data-index", i);
     searchCardContainer.appendChild(li);
-   }
+  }
 }
 
-function searchHis(){
+function searchHis() {
+  var storedSearchHistory = JSON.parse(localStorage.getItem("searchHistory"));
 
-   var storedSearchHistory = JSON.parse(localStorage.getDate("searchHistory"));
-
-   if(storedSearchHistory!=null){
-     searchHistory = storedSearchHistory;
-   }
+  if (storedSearchHistory != null) {
+    searchHistory = storedSearchHistory;
+  }
   renderSearchHistory();
 }
 
-function saveToSearchHistory(){
-   // Stringify and set key in localStorage to searchHistory array
- localStorage.setItem("serchHistory", JSON.stringify(searchHistory));
+function saveToSearchHistory() {
+  // Stringify and set key in localStorage to searchHistory array
+  localStorage.setItem("serchHistory", JSON.stringify(searchHistory));
 }
-  
-   
+
 // Add submit event to form
 
 searchButton.addEventListener("click", formSubmitHandler);
-

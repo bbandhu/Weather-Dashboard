@@ -15,18 +15,20 @@
 }
 
 .form-row label{
-
     font-weight: bold;
-   
+}
+
+.form-row{
+
+    border-bottom: 1px gray;
+    width: 90%;
 
 }
 .form-control {
    
     font-size: 1.2rem;
     border-color: lightblue;
-    width: 70%;
-
-    
+    width: 90%;  
 }
 .btn-primary {
     border-color: lightblue;
@@ -34,7 +36,7 @@
     font-size: 1.2rem;
     border-radius: 10px;
     margin-top: 10px;
-    width: 70%;
+    width: 90%;
 
     
 }
@@ -70,6 +72,7 @@ div .todayForecast{
     position: absolute;
     top: -75px;
     right: -397px;
+    width: auto;
 
 }
   .border-me {
@@ -107,7 +110,7 @@ ul {
     font-size: 1.5em;
     line-height: 1.5;
     border-radius: 10px;
-    width: 70%;
+    width: 80%;
   }
   
   li:before {
