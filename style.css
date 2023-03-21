@@ -3,6 +3,14 @@
     justify-content: center;
     
 }
+
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+  }
+
+
 .navbar-brand {
     color: white;
     font-weight: bold;
@@ -15,35 +23,33 @@
 }
 
 .form-row label{
-
     font-weight: bold;
-   
+}
+
+.form-row{
+
+    border-bottom: 1px gray;
+    width: 90%;
 
 }
 .form-control {
    
     font-size: 1.2rem;
     border-color: lightblue;
-    width: 70%;
-
-    
+    width: 90%;  
 }
 .btn-primary {
     border-color: lightblue;
-    /* padding: 10px 20px; */
     font-weight: bold;
     font-size: 1.2rem;
     border-radius: 10px;
     margin-top: 10px;
-    width: 70%;
+    width: 90%;
 
     
 }
 
-/* .btn-primary:hover {
-    background-color: 
-    border-color: #3C8D40;
-} */
+
 .card {
  max-width: 500px;
  margin-top: 50px;
@@ -52,26 +58,112 @@
 }
 
 #weather-card-container {
-    text-align: center;
     display: flex;
-    border-color: lightblue;
+    position: fixed;
+
+
 }
-
-
-
-/* .row{
-   
-    border-color: lightblue;
-    background-color: aliceblue;
-
-} */
 
 div.card-body{
     display:inline-flexbox;
-    offset: distance 40px;;
+    offset: distance 40px;
     background-color: darkslategray;
     color: white;
+    position: fixed;
+    
 
 }
 
+
+div .todayForecast{
+    border-radius: 5px;
+    height: 300px;
+    padding: 25px;
+    position: absolute;
+    top: -75px;
+    right: -397px;
+
+}
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: white;
+  }
+  
+  li {
+    height: 38px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: lightgray;
+    color: white;
+    font-size: 1.5em;
+    line-height: 1.5;
+    border-radius: 10px;
+    width: 80%;
+  }
+  
+  li:before {
+    content: "\200B";
+    position: absolute;
+  }
+  
+  li::after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+ 
+  h4{
+    font-weight: bold;
+  }
+  /* Small devices (up to 576px) */
+@media (max-width: 576px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+  .form-row,
+  .btn-primary {
+    width: 100%;
+  }
+  .card {
+    margin-left: 0;
+  }
+  div .todayForecast {
+    top: -55px;
+    right: -300px;
+    width: 100%;
+  }
+  li {
+    width: 100%;
+    font-size: 1.2em;
+  }
+}
+
+/* Medium devices (576px - 768px) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .navbar {
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+  .form-row,
+  .btn-primary {
+    width: 100%;
+  }
+  .card {
+    margin-left: 0;
+  }
+  div .todayForecast {
+    top: -55px;
+    right: -300px;
+    width: 100%;
+  }
+  li {
+    width: 100%;
+    font-size: 1.2em;
+  }
+}
 
