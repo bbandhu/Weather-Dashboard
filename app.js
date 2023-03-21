@@ -4,17 +4,18 @@ var APIKey = "b91874a7b2e580ff5b02fdd3f2deab0c";
 var userFormEl = document.querySelector(".form-row");
 var weatherContainerEl = document.querySelector("#weather-container");
 var weatherSearchTerm = document.querySelector("#city-search-term");
-var currentForecastContainter = document.getElementById("current-weather");
+//var currentForecastContainter = document.getElementById("current-weather");
 
 var lon;
 var lat;
 var searchHistory = [];
-
 var formSubmitHandler = function (event) {
   event.preventDefault();
-  var city = searchInput.value.trim();
-  console.log(city);
+  city = searchInput.value.trim();
+ // console.log(city);
   getWeatherDataCors(city);
+
+
   // Return from function early if submitted city is blank
   if (city == "") {
     return;
@@ -22,9 +23,7 @@ var formSubmitHandler = function (event) {
   // Add city to searchHistory array, clear the input
   searchHistory.push(city);
   searchInput.value = "";
-
   // Store updated search in localStorage, re-render the list
-
   saveToSearchHistory(city);
   renderSearchHistory();
 };
@@ -77,6 +76,9 @@ var displayWeather = function (data) {
     return;
   }
 
+  const weatherCardContainer = document.getElementById("weather-card-container");
+  weatherCardContainer.innerHTML = "";
+
   for (var i = 1; i < 40; i = i + 8) {
     let humidity = data.list[i].main.humidity;
 
@@ -96,9 +98,6 @@ var displayWeather = function (data) {
     var des = data.list[i].weather[0].description;
 
     console.log(humidity, temp, date);
-    const weatherCardContainer = document.getElementById(
-      "weather-card-container"
-    );
     const weatherCard = document.createElement("div");
     weatherCard.classList.add("col-sm-8");
     weatherCard.classList.add("card");
@@ -133,7 +132,7 @@ var displayWeather = function (data) {
     windSpeed.textContent = "Wind: " + wind + " MPH";
     cardBody.appendChild(windSpeed);
 
-    weatherCardContainer.appendChild(weatherCard);
+    weatherCardContainer.append(weatherCard);
   }
 };
 
@@ -152,6 +151,7 @@ function currentForecast(data) {
   }
   let humidity = data.list[0].main.humidity;
   let temp = data.list[0].main.temp;
+  let cityName = data.city.name;
 
   let wind = data.list[0].wind.speed;
   let dateFromAPI = data.list[0].dt_txt;
@@ -161,11 +161,15 @@ function currentForecast(data) {
   let Month = new Date(timestamp).getMonth() + 1;
   let Year = new Date(timestamp).getFullYear();
   let date = `${Month}/${Day}/${Year}`;
+  
+
 
   var icon = data.list[0].weather[0].icon;
   var des = data.list[0].weather[0].description;
 
   const currentForecastContainter = document.getElementById("current-weather");
+  currentForecastContainter.innerHTML = "";
+
   const currentForecastCard = document.createElement("div");
   currentForecastCard.style.backgroundColor = "lightblue";
   currentForecastCard.style.padding = "10px";
@@ -179,9 +183,13 @@ function currentForecast(data) {
   currentForecastCard.appendChild(currentForecastCardBody);
   // const weatherIcon = document.createElement("img");
 
-  const today = document.createElement("h3");
-  today.textContent = city.value + "(" + date + ")";
+  // const cityName = document.createElement("h3");
+  // cityName.textContent = city.value;
+  // currentForecastCardBody.appendChild(cityName);
 
+
+  const today = document.createElement("h3");
+  today.textContent = cityName + "(" + date + ")";
   currentForecastCardBody.appendChild(today);
 
   const temperature = document.createElement("p");
@@ -206,7 +214,7 @@ function currentForecast(data) {
   windSpeed.textContent = "Wind: " + wind + " MPH";
   currentForecastCardBody.appendChild(windSpeed);
 
-  currentForecastContainter.appendChild(currentForecastCard);
+  currentForecastContainter.append(currentForecastCard);
 }
 
 function renderSearchHistory() {

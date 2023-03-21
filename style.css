@@ -3,6 +3,14 @@
     justify-content: center;
     
 }
+
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+  }
+
+
 .navbar-brand {
     color: white;
     font-weight: bold;
@@ -50,16 +58,18 @@
 }
 
 #weather-card-container {
-    /* text-align: center; */
     display: flex;
+    position: fixed;
+
 
 }
 
 div.card-body{
     display:inline-flexbox;
-    offset: distance 40px;;
+    offset: distance 40px;
     background-color: darkslategray;
     color: white;
+    position: fixed;
     
 
 }
@@ -72,26 +82,8 @@ div .todayForecast{
     position: absolute;
     top: -75px;
     right: -397px;
-    width: auto;
 
 }
-  .border-me {
-    /* default style without border */
-    /* border: none; */
-  }
-  
-  .border-me.with-border {
-    /* border style when border is added */
-    border: 1px solid black;
-  }
-
-@media (min-width: 992px) {
-    .fiveday {
-        margin-right: 1em; 
-        padding: .5em;
-    }
-
-} 
 
 
 ul {
@@ -123,4 +115,55 @@ ul {
     display: block;
     clear: both;
   }
+ 
+  h4{
+    font-weight: bold;
+  }
+  /* Small devices (up to 576px) */
+@media (max-width: 576px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+  .form-row,
+  .btn-primary {
+    width: 100%;
+  }
+  .card {
+    margin-left: 0;
+  }
+  div .todayForecast {
+    top: -55px;
+    right: -300px;
+    width: 100%;
+  }
+  li {
+    width: 100%;
+    font-size: 1.2em;
+  }
+}
+
+/* Medium devices (576px - 768px) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .navbar {
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+  .form-row,
+  .btn-primary {
+    width: 100%;
+  }
+  .card {
+    margin-left: 0;
+  }
+  div .todayForecast {
+    top: -55px;
+    right: -300px;
+    width: 100%;
+  }
+  li {
+    width: 100%;
+    font-size: 1.2em;
+  }
+}
 
