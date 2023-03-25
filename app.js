@@ -70,6 +70,8 @@ var getWeatherData = function (lat, lon) {
   });
 };
 
+//function displayWeather function takes the weather data as an input, iterates through it,
+// and creates HTML elements to display the weather information for each of the five days. It then appends the elements to the webpage.
 var displayWeather = function (data) {
   if (data.length === 0) {
     weatherContainerEl.textContent = "No report";
@@ -77,6 +79,7 @@ var displayWeather = function (data) {
   }
 
   const weatherCardContainer = document.getElementById("weather-card-container");
+  document.getElementById('heading').innerHTML = "5 Day Forecast:"
   weatherCardContainer.innerHTML = "";
 
   for (var i = 1; i < 40; i = i + 8) {
@@ -98,9 +101,11 @@ var displayWeather = function (data) {
     var des = data.list[i].weather[0].description;
 
     console.log(humidity, temp, date);
+   
     const weatherCard = document.createElement("div");
     weatherCard.classList.add("col-sm-8");
     weatherCard.classList.add("card");
+
 
     const cardBody = document.createElement("div");
     cardBody.classList.add("card-body");
@@ -143,7 +148,7 @@ searchButton.addEventListener("click", formSubmitHandler);
 // function kelvinToFahrenheit(kelvin) {
 //   return (kelvin - 273.15) * 9 / 5 + 32;
 // }
-
+//function that retreives current forecast and diaplay on the current day/time
 function currentForecast(data) {
   if (data.length === 0) {
     weatherContainerEl.textContent = "No report";
@@ -203,9 +208,6 @@ function currentForecast(data) {
     `http://openweathermap.org/img/w/${icon}.png`
   );
   currentForecastCardBody.appendChild(weatherIcon);
-
-  //cardBody.appendChild(weatherIcon);
-
   const humid = document.createElement("p");
   humid.textContent = "Humidity: " + humidity + " %";
   currentForecastCardBody.appendChild(humid);
@@ -247,5 +249,4 @@ function saveToSearchHistory() {
 }
 
 // Add submit event to form
-
 searchButton.addEventListener("click", formSubmitHandler);
