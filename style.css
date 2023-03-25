@@ -10,7 +10,6 @@ body {
 
   }
 
-
 .navbar-brand {
     color: white;
     font-weight: bold;
@@ -48,10 +47,8 @@ body {
 
     
 }
-
-
 .card {
- max-width: 500px;
+ max-width: 500px; 
  margin-top: 50px;
  margin-left: 20px;
  border: none;
@@ -59,9 +56,12 @@ body {
 
 #weather-card-container {
     display: flex;
-    position: fixed;
+    justify-content: center!important;
+    overflow-y: hidden;
+    position: sticky;
 
 
+    
 }
 
 div.card-body{
@@ -116,11 +116,17 @@ ul {
     clear: both;
   }
  
-  h4{
+  h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    margin-left: 800px;
     font-weight: bold;
-  }
+}
   /* Small devices (up to 576px) */
-@media (max-width: 576px) {
+/* @media (max-width: 576px) {
   .navbar {
     flex-direction: column;
     align-items: center;
@@ -141,10 +147,10 @@ ul {
     width: 100%;
     font-size: 1.2em;
   }
-}
+} */
 
 /* Medium devices (576px - 768px) */
-@media (min-width: 576px) and (max-width: 768px) {
+/* @media (min-width: 576px) and (max-width: 768px) {
   .navbar {
     justify-content: space-between;
     padding: 0 10px;
@@ -165,5 +171,5 @@ ul {
     width: 100%;
     font-size: 1.2em;
   }
-}
+} */
 
