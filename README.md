@@ -69,7 +69,7 @@ JS , Weather API  https://openweathermap.org/forecast5#data
 
  # Screenshots
 
-![image](https://github.com/bbandhu/ORM-E-commerce/blob/main/Assets/WeatherDashboard.png)
+![image](https://github.com/bbandhu/Weather-Dashboard/blob/main/Assests/WeatherDashboard.png)
 
 
 
