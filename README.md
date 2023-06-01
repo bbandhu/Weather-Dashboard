@@ -1,21 +1,10 @@
+
 # Weather Dashboard
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Name
-Weather Dashboard that display weather forecast for 5 days for a given city and also saves serach history
-
-## Installation
-N/A -
-
-## Usage
-After Deployment, user should get the results in the search for a given city
-
-## Tools used
-CSS, Html , JS , Jquery
-JS , Weather API  https://openweathermap.org/forecast5#data
-
-
-## Credit
-My Instructor, tutor, TA's
+## Description
+  
+  Weather Dashboard that display weather forecast for 5 days for a given city and also saves serach history
 
 ## Project 
 This is a JavaScript code that uses the OpenWeatherMap API to get weather data for a specified city and display it on the webpage.
@@ -38,7 +27,49 @@ The saveToSearchHistory function saves the search history array to localStorage.
 
 Finally, the code adds an event listener to the search button to call the formSubmitHandler function when the button is clicked, and also calls searchHis function to render the search history on the webpage.
 
+## Tools used
+CSS, Html , JS , Jquery
+JS , Weather API  https://openweathermap.org/forecast5#data
 
+
+## Table of Contents
+   
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Credits](#credits)
+  - [License](#license)
+  - [Features](#features)
+  - [Tests](#tests)
+  - [Tools](#tools)
+  - [Project](#project)
+  - [Screenshot](#screenshot)
+
+  ## Installation
+
+  Clone the repo  and open the html file in browser to see the  dashboard
+
+  ## Usage
+
+  After Deployment, user should get the results in the search for a given city
+
+  ## Credits
+
+  
+
+  ## License 
+    this project is licensed under MIT License
+
+  ## Features
+   
+  Fetches the weather report for a given city
+
+  ## Tests
+
+  N/A
+
+ # Screenshots
+
+![image](https://github.com/bbandhu/ORM-E-commerce/blob/main/Assets/WeatherDashboard.png)
 
 
 

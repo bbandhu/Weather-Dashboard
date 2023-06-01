@@ -1,3 +1,4 @@
+
 var searchInput = document.querySelector("#city");
 var searchButton = document.querySelector("#submitButton");
 var APIKey = "b91874a7b2e580ff5b02fdd3f2deab0c";
@@ -11,11 +12,8 @@ var lat;
 var searchHistory = [];
 var formSubmitHandler = function (event) {
   event.preventDefault();
-  city = searchInput.value.trim();
- // console.log(city);
+  var city = searchInput.value.trim();
   getWeatherDataCors(city);
-
-
   // Return from function early if submitted city is blank
   if (city == "") {
     return;
@@ -24,7 +22,7 @@ var formSubmitHandler = function (event) {
   searchHistory.push(city);
   searchInput.value = "";
   // Store updated search in localStorage, re-render the list
-  saveToSearchHistory(city);
+  saveToSearchHistory();
   renderSearchHistory();
 };
 
@@ -38,11 +36,9 @@ var getWeatherDataCors = function (city) {
     APIKey;
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
-      console.log(response);
       response.json().then(function (data) {
         lon = data.coord.lon;
         lat = data.coord.lat;
-        console.log(lon, lat);
         getWeatherData(lat, lon);
       });
     }
@@ -50,7 +46,6 @@ var getWeatherDataCors = function (city) {
 };
 
 var getWeatherData = function (lat, lon) {
-  console.log(lon, lat);
   var apiUrl =
     "https://api.openweathermap.org/data/2.5/forecast?lat=" +
     `${lat}` +
@@ -62,7 +57,6 @@ var getWeatherData = function (lat, lon) {
   fetch(apiUrl).then(function (response) {
     if (response.ok) {
       response.json().then(function (weatherData) {
-        console.log(weatherData);
         displayWeather(weatherData);
         currentForecast(weatherData);
       });
@@ -84,9 +78,6 @@ var displayWeather = function (data) {
 
   for (var i = 1; i < 40; i = i + 8) {
     let humidity = data.list[i].main.humidity;
-
-    //let temp = kelvinToFahrenheit(data.list[i].main.temp);
-
     let temp = data.list[i].main.temp;
     let wind = data.list[i].wind.speed;
     let dateFromAPI = data.list[i].dt_txt;
@@ -100,12 +91,9 @@ var displayWeather = function (data) {
     var icon = data.list[i].weather[0].icon;
     var des = data.list[i].weather[0].description;
 
-    console.log(humidity, temp, date);
-   
     const weatherCard = document.createElement("div");
     weatherCard.classList.add("col-sm-8");
     weatherCard.classList.add("card");
-
 
     const cardBody = document.createElement("div");
     cardBody.classList.add("card-body");
@@ -143,12 +131,7 @@ var displayWeather = function (data) {
 
 searchButton.addEventListener("click", formSubmitHandler);
 
-//convert the temeparture from Kelvin to Fahreinheit
-//commenting as I we are adding units = imperial param in the ur;
-// function kelvinToFahrenheit(kelvin) {
-//   return (kelvin - 273.15) * 9 / 5 + 32;
-// }
-//function that retreives current forecast and diaplay on the current day/time
+//function that retrieves current forecast and display it on the current day/time
 function currentForecast(data) {
   if (data.length === 0) {
     weatherContainerEl.textContent = "No report";
@@ -166,8 +149,6 @@ function currentForecast(data) {
   let Month = new Date(timestamp).getMonth() + 1;
   let Year = new Date(timestamp).getFullYear();
   let date = `${Month}/${Day}/${Year}`;
-  
-
 
   var icon = data.list[0].weather[0].icon;
   var des = data.list[0].weather[0].description;
@@ -179,19 +160,11 @@ function currentForecast(data) {
   currentForecastCard.style.backgroundColor = "lightblue";
   currentForecastCard.style.padding = "10px";
   currentForecastCard.style.border = "1px solid black";
-
-  // currentForecastCard.classList.add("d-flex flex-row bd-highlight mb-3");
   currentForecastCard.classList.add("card");
 
   const currentForecastCardBody = document.createElement("div");
   currentForecastCardBody.classList.add("forecast-body");
   currentForecastCard.appendChild(currentForecastCardBody);
-  // const weatherIcon = document.createElement("img");
-
-  // const cityName = document.createElement("h3");
-  // cityName.textContent = city.value;
-  // currentForecastCardBody.appendChild(cityName);
-
 
   const today = document.createElement("h3");
   today.textContent = cityName + "(" + date + ")";
@@ -202,12 +175,12 @@ function currentForecast(data) {
   currentForecastCardBody.appendChild(temperature);
 
   const weatherIcon = document.createElement("img");
-
   weatherIcon.setAttribute(
     "src",
     `http://openweathermap.org/img/w/${icon}.png`
   );
   currentForecastCardBody.appendChild(weatherIcon);
+
   const humid = document.createElement("p");
   humid.textContent = "Humidity: " + humidity + " %";
   currentForecastCardBody.appendChild(humid);
@@ -219,20 +192,39 @@ function currentForecast(data) {
   currentForecastContainter.append(currentForecastCard);
 }
 
+// function renderSearchHistory() {
+//   // Retrieve the search history from localStorage
+//   var searchCardContainer = document.getElementById("search-history");
+//   searchCardContainer.innerHTML = "";
+
+//   for (var i = 0; i < searchHistory.length; i++) {
+//     var search = searchHistory[i];
+
+//     var li = document.createElement("li");
+//     li.textContent = search;
+//     li.setAttribute("data-index", i);
+//     searchCardContainer.appendChild(li);
+    
+//   }
+// }
+
 function renderSearchHistory() {
-  // Retrieve the search history from localStorage //TODO
   var searchCardContainer = document.getElementById("search-history");
   searchCardContainer.innerHTML = "";
 
   for (var i = 0; i < searchHistory.length; i++) {
     var search = searchHistory[i];
 
-    var li = document.createElement("li");
-    li.textContent = search;
-    li.setAttribute("data-index", i);
-    searchCardContainer.appendChild(li);
+    var button = document.createElement("button");
+    button.textContent = search;
+    button.setAttribute("data-index", i);
+    button.classList.add("btn", "btn-secondary", "mb-2");
+    searchCardContainer.appendChild(button);
+
+    button.addEventListener("click", handleSearchHistoryClick);
   }
 }
+
 
 function searchHis() {
   var storedSearchHistory = JSON.parse(localStorage.getItem("searchHistory"));
@@ -245,7 +237,16 @@ function searchHis() {
 
 function saveToSearchHistory() {
   // Stringify and set key in localStorage to searchHistory array
-  localStorage.setItem("serchHistory", JSON.stringify(searchHistory));
+  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+}
+
+
+//function to handle search history click
+function handleSearchHistoryClick(event) {
+  var element = event.target;
+  console.log("element", element);
+  var city = element.textContent;
+  getWeatherDataCors(city);
 }
 
 // Add submit event to form
