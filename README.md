@@ -71,6 +71,7 @@ JS , Weather API  https://openweathermap.org/forecast5#data
 
 ![image](https://github.com/bbandhu/Weather-Dashboard/blob/main/Assests/WeatherDashboard.png)
 
+ ## Deployment
 
-
+https://bbandhu.github.io/Weather-Dashboard/
 
