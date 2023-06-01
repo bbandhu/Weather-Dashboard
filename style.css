@@ -54,24 +54,37 @@ body {
  border: none;
 }
 
-#weather-card-container {
-    display: flex;
-    justify-content: center!important;
-    overflow-y: hidden;
-    position: sticky;
+/* #weather-card-container {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: sticky;
+  height: 500px;
+} */
 
-
-    
+section {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+  padding: 10px;
 }
-
+#weather-card-container {
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+  max-height: 500px;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding: 10px;
+}
 div.card-body{
     display:inline-flexbox;
     offset: distance 40px;
     background-color: darkslategray;
     color: white;
     position: fixed;
-    
-
 }
 
 
@@ -97,8 +110,8 @@ ul {
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 5px;
-    background-color: lightgray;
-    color: white;
+    background-color: gray;
+    color: black;
     font-size: 1.5em;
     line-height: 1.5;
     border-radius: 10px;
@@ -125,8 +138,14 @@ ul {
     margin-left: 800px;
     font-weight: bold;
 }
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+  width: 80%;
+}
   /* Small devices (up to 576px) */
-/* @media (max-width: 576px) {
+@media (max-width: 576px) {
   .navbar {
     flex-direction: column;
     align-items: center;
@@ -147,10 +166,10 @@ ul {
     width: 100%;
     font-size: 1.2em;
   }
-} */
+} 
 
 /* Medium devices (576px - 768px) */
-/* @media (min-width: 576px) and (max-width: 768px) {
+@media (min-width: 576px) and (max-width: 768px) {
   .navbar {
     justify-content: space-between;
     padding: 0 10px;
@@ -171,5 +190,5 @@ ul {
     width: 100%;
     font-size: 1.2em;
   }
-} */
+} 
 
